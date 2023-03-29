@@ -1,0 +1,22 @@
+Q1: 
+    If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+
+A1:
+    I would probably use the same formula as Spotify's, calculating the average energy, valence and
+    danceability for that list of songs:
+
+    SELECT audio_aura FROM (
+        SELECT AVG(energy), AVG(valence), AVG(danceability) 
+        AS audio_aura 
+        FROM songs;
+    );
+    
+
+ Q2:
+    Hypothesize about why the way you’ve calculated this aura 
+    might not be very representative of the listener. 
+    What better ways of calculating this aura would you propose?
+
+A2:
+    I would also take into account the listener's most favourite artist.
+    So I would combine the audio_aura with their top artists and genre of songs.
